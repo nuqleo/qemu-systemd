@@ -1,0 +1,4 @@
+[NetDev]
+Name=virbr0
+Kind=bridge
+MACAddress=00:11:22:33:44:55

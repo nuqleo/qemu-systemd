@@ -223,13 +223,6 @@ Prefix=2001:db8::/64
 
 ---
 
-## Notes
-
-* No VM lifecycle management beyond systemd
-* No built-in storage management
-* Disk images must be managed manually
-* Designed for simple and reproducible setups
-
 ### VFIO and memory locking
 
 If you use VFIO (PCI passthrough), you may need to increase or remove memory locking limits.
@@ -239,6 +232,13 @@ Add the following to the `[Service]` section of the systemd unit:
 ```ini
 LimitMEMLOCK=infinity
 ```
+
+## Notes
+
+* No VM lifecycle management beyond systemd
+* No built-in storage management
+* Disk images must be managed manually
+* Designed for simple and reproducible setups
 
 ## License
 

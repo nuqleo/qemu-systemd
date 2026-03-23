@@ -183,7 +183,9 @@ Example:
 nc -U /run/qemu-<instance>.sock
 ```
 You can then interactively send QEMU monitor commands.
-
+```bash
+(qemu) sendkey ctrl-alt-delete
+```
 ---
 
 ## Networking

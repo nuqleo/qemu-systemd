@@ -68,7 +68,6 @@ cp etc/nftables/qemu-nat.nft /etc/nftables/
 Reload systemd:
 
 ```bash
-systemctl daemon-reexec
 systemctl daemon-reload
 ```
 

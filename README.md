@@ -238,6 +238,7 @@ Add the following to the `[Service]` section of the systemd unit:
 
 ```ini
 LimitMEMLOCK=infinity
+```
 
 ## License
 

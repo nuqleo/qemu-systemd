@@ -51,6 +51,7 @@ qemu-systemd
 - systemd
 - systemd-networkd
 - nftables
+- `nc` (netcat) — used by systemd unit to send system_powerdown to VM
 
 ---
 

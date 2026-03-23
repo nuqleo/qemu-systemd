@@ -166,6 +166,23 @@ The systemd service sends a `system_powerdown` signal to the VM when stopping.
 ```ini
 TimeoutStopSec=90
 ```
+### QEMU monitor socket
+
+Each VM exposes a QEMU monitor over a UNIX socket.
+
+The socket path is defined in the systemd unit, for example:
+
+```bash
+/run/qemu-<instance>.sock
+```
+This socket provides access to the QEMU monitor (HMP interface) and can be used to control the virtual machine.
+
+Example:
+
+```bash
+nc -U /run/qemu-<instance>.sock
+```
+You can then interactively send QEMU monitor commands.
 
 ---
 

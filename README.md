@@ -65,7 +65,7 @@ cp -r etc/qemu /etc/
 cp etc/nftables/qemu-nat.nft /etc/nftables/
 ````
 
-Reload systemd:
+Reload systemd configuration:
 
 ```bash
 systemctl daemon-reload

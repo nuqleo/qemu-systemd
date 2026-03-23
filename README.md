@@ -25,21 +25,21 @@ It is intended for lightweight environments where virtual machines are managed t
 ```
 
 qemu-systemd
-├── etc
-│   ├── nftables
-│   │   └── qemu-nat.nft
-│   ├── qemu
-│   │   ├── test-arm.conf
-│   │   ├── test-riscv.conf
-│   │   └── test-vm.conf
-│   └── systemd
-│       ├── network
-│       │   ├── virbr0.netdev
-│       │   └── virbr0.network
-│       └── system
-│           ├── [qemu-arm@.service]
-│           ├── [qemu-riscv@.service]
-│           └── [qemu@.service]
+└─ etc
+   ├── nftables
+   │   └── qemu-nat.nft
+   ├── qemu
+   │   ├── test-arm.conf
+   │   ├── test-riscv.conf
+   │   └── test-vm.conf
+   └── systemd
+       ├── network
+       │   ├── virbr0.netdev
+       │   └── virbr0.network
+       └── system
+           ├── qemu-arm@.service
+           ├── qemu-riscv@.service
+           └── qemu@.service
 
 ````
 

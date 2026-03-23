@@ -238,3 +238,7 @@ Add the following to the `[Service]` section of the systemd unit:
 
 ```ini
 LimitMEMLOCK=infinity
+
+## License
+
+This project is released into the public domain using CC0 1.0.

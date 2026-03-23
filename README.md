@@ -123,19 +123,28 @@ VM configuration files are stored in:
 ```
 /etc/qemu/
 ```
-
-Each file contains QEMU command-line arguments.
+Each configuration file defines a variable QEMU_ARGS which is used by the corresponding systemd unit.
 
 Example:
 
 ```bash
--name test-vm
--m 1024
--smp 2
--drive file=disk.img,format=qcow2
--netdev bridge,id=hn0,br=virbr0
--device virtio-net-pci,netdev=hn0,mac=52:54:00:12:34:56
+QEMU_ARGS="-m 8G \
+-smp 16,sockets=2,cores=8,threads=1 \
+-cpu host,kvm=off \
+-machine type=q35,accel=kvm,usb=on \
+-device virtio-scsi-pci,id=scsi0,num_queues=4 \
+-drive file=/path/to/vm.qcow2,format=qcow2,if=none,id=hd0,cache=unsafe,discard=unmap,detect-zeroes=unmap \
+-device scsi-hd,bus=scsi0.0,drive=hd0 \
+-netdev bridge,br=virbr0,id=net0 \
+-device virtio-net-pci,netdev=net0,speed=10000,mac=00:01:02:03:04:05 \
+-device virtio-tablet \
+-device virtio-vga \
+-display vnc=127.0.0.1:10 \
+-serial telnet:127.0.0.1:2010,server,nowait \
+-bios /usr/share/edk2/ovmf/OVMF_CODE.fd \
+-boot menu=off"
 ```
+The systemd service reads this variable and passes it directly to the QEMU binary.
 
 ---
 

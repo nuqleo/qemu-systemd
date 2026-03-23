@@ -37,9 +37,9 @@ qemu-systemd
 │       │   ├── virbr0.netdev
 │       │   └── virbr0.network
 │       └── system
-│           ├── [qemu-arm@.service](mailto:qemu-arm@.service)
-│           ├── [qemu-riscv@.service](mailto:qemu-riscv@.service)
-│           └── [qemu@.service](mailto:qemu@.service)
+│           ├── [qemu-arm@.service]
+│           ├── [qemu-riscv@.service]
+│           └── [qemu@.service]
 
 ````
 

@@ -220,6 +220,3 @@ Prefix=2001:db8::/64
 * No built-in storage management
 * Disk images must be managed manually
 * Designed for simple and reproducible setups
-
----
-```

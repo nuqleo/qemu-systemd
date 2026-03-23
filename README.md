@@ -202,6 +202,26 @@ Virtual machine interfaces are attached to the bridge via QEMU configuration:
 -device virtio-net-pci,netdev=net0,speed=10000,mac=00:01:02:03:04:05
 ```
 
+### Multiple bridges
+
+In addition to `virbr0`, you can define additional bridges (e.g. `virbr1`, `virbr2`, etc.) using the same systemd-networkd configuration approach.
+
+To allow QEMU to use these bridges, they must be permitted in:
+
+```bash
+/etc/qemu/bridge.conf
+```
+Add entries like:
+```ini
+allow virbr1
+allow virbr2
+```
+Or allow all bridges:
+```ini
+allow all
+```
+Without this configuration, QEMU will refuse to attach to the bridge.
+
 ---
 
 ### IPv4

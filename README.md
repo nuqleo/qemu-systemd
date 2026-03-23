@@ -175,8 +175,9 @@ Static leases are configured in `virbr0.network`:
 
 ```ini
 [DHCPServerStaticLease]
-MACAddress=52:54:00:12:34:56
-Address=192.168.100.10
+MACAddress=00:01:02:03:04:05
+Address=192.168.122.2
+Hostname=test-vm
 ```
 
 ---

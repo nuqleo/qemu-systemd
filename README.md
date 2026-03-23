@@ -155,6 +155,17 @@ QEMU is executed under a dedicated unprivileged user.
 
 You may need to adjust the `-run-with user=qemu` option in the systemd unit files accordingly.
 
+### Service Stop Behavior
+
+The systemd service sends a `system_powerdown` signal to the VM when stopping.
+
+- By default, the service waits **60 seconds** for the VM to shut down gracefully.
+- This timeout can be adjusted via the `TimeoutStopSec` option in the `[Service]` section of the unit file:
+
+```ini
+TimeoutStopSec=90
+```
+
 ---
 
 ## Networking

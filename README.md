@@ -153,7 +153,7 @@ QEMU is executed under a dedicated unprivileged user.
 * On Fedora, this user is typically qemu
 * On other systems, the user name may differ depending on the distribution
 
-You may need to adjust the -run-with user=qemu option in the systemd unit files accordingly.
+You may need to adjust the `-run-with user=qemu` option in the systemd unit files accordingly.
 
 ---
 

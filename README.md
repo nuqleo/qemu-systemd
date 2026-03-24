@@ -124,7 +124,7 @@ VM configuration files are stored in:
 ```
 /etc/qemu/
 ```
-Each configuration file defines a variable QEMU_ARGS which is used by the corresponding systemd unit.
+Each configuration file defines a `QEMU_ARGS` variable which is used by the corresponding systemd unit.
 
 Example:
 
@@ -175,17 +175,16 @@ The socket path is defined in the systemd unit, for example:
 ```bash
 /run/qemu-<instance>.sock
 ```
-This socket provides access to the QEMU monitor (HMP, Human Monitor Protocol interface) and can be used to control the virtual machine.
+This socket provides access to the QEMU monitor (HMP - Human Monitor Protocol) and can be used to control the virtual machine.
 
-Example:
+Example session:
 
-```bash
-nc -U /run/qemu-<instance>.sock
-```
-You can then interactively send QEMU monitor commands.
-```bash
+```text
+$ nc -U /run/qemu-<instance>.sock
 (qemu) sendkey ctrl-alt-delete
 ```
+You can then interactively send QEMU monitor commands.
+
 ---
 
 ## Networking
@@ -215,14 +214,15 @@ To allow QEMU to use these bridges, they must be permitted in:
 ```
 Add entries like:
 ```ini
+allow virbr0
 allow virbr1
-allow virbr2
 ```
 Or allow all bridges:
 ```ini
 allow all
 ```
 Without this configuration, QEMU will refuse to attach to the bridge.
+This restriction is enforced by the QEMU bridge helper.
 
 ---
 

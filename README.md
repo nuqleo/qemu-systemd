@@ -214,8 +214,8 @@ To allow QEMU to use these bridges, they must be permitted in:
 ```
 Add entries like:
 ```ini
-allow virbr0
 allow virbr1
+allow virbr2
 ```
 Or allow all bridges:
 ```ini

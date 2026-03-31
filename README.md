@@ -185,6 +185,19 @@ $ nc -U /run/qemu-<instance>.sock
 ```
 You can then interactively send QEMU monitor commands.
 
+### Service startup order
+
+The QEMU systemd service depends on the bridge interface (e.g. `virbr0`) being available.
+
+The unit is configured with:
+
+```ini
+Wants=sys-subsystem-net-devices-virbr0.device
+After=sys-subsystem-net-devices-virbr0.device
+```
+This ensures that the network interface is created before the VM starts.
+
+Make sure that systemd-networkd is running and has already configured the bridge interface before starting QEMU services.
 ---
 
 ## Networking

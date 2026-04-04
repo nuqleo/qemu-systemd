@@ -156,7 +156,7 @@ QEMU is executed under a dedicated unprivileged user.
 
 You may need to adjust the `-run-with user=qemu` option in the systemd unit files accordingly.
 
-### Service Stop Behavior
+### Service stop behavior
 
 The systemd service sends a `system_powerdown` signal to the VM when stopping.
 
@@ -166,6 +166,20 @@ The systemd service sends a `system_powerdown` signal to the VM when stopping.
 ```ini
 TimeoutStopSec=90
 ```
+### Service startup order
+
+The QEMU systemd service depends on the bridge interface (e.g. `virbr0`) being available.
+
+The unit is configured with:
+
+```ini
+Wants=sys-subsystem-net-devices-virbr0.device
+After=sys-subsystem-net-devices-virbr0.device
+```
+This ensures that the network interface is created before the VM starts.
+
+Make sure that systemd-networkd is running and has already configured the bridge interface before starting QEMU services.
+
 ### QEMU monitor socket
 
 Each VM exposes a QEMU monitor over a UNIX socket.
@@ -184,20 +198,6 @@ $ nc -U /run/qemu-<instance>.sock
 (qemu) sendkey ctrl-alt-delete
 ```
 You can then interactively send QEMU monitor commands.
-
-### Service startup order
-
-The QEMU systemd service depends on the bridge interface (e.g. `virbr0`) being available.
-
-The unit is configured with:
-
-```ini
-Wants=sys-subsystem-net-devices-virbr0.device
-After=sys-subsystem-net-devices-virbr0.device
-```
-This ensures that the network interface is created before the VM starts.
-
-Make sure that systemd-networkd is running and has already configured the bridge interface before starting QEMU services.
 
 ---
 

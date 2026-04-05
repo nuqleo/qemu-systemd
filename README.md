@@ -9,7 +9,7 @@ It is intended for lightweight environments where virtual machines are managed t
 - systemd template units for running QEMU virtual machines
 - Support for multiple architectures:
   - x86_64
-  - ARM
+  - AArch64
   - LoongArch64
   - RISC-V
 - Per-VM configuration files
@@ -100,7 +100,7 @@ x86_64:
 systemctl start qemu@test-vm
 ```
 
-ARM:
+AArch64:
 
 ```bash
 systemctl start qemu-arm@test-arm

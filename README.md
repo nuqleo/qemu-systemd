@@ -10,6 +10,7 @@ It is intended for lightweight environments where virtual machines are managed t
 - Support for multiple architectures:
   - x86_64
   - ARM
+  - LoongArch64
   - RISC-V
 - Per-VM configuration files
 - Bridge networking via systemd-networkd
@@ -30,6 +31,7 @@ qemu-systemd
    │   └── qemu-nat.nft
    ├── qemu
    │   ├── test-arm.conf
+   │   ├── test-loong.conf
    │   ├── test-riscv.conf
    │   └── test-vm.conf
    └── systemd
@@ -38,6 +40,7 @@ qemu-systemd
        │   └── virbr0.network
        └── system
            ├── qemu-arm@.service
+           ├── qemu-loong@.service
            ├── qemu-riscv@.service
            └── qemu@.service
 
@@ -101,6 +104,12 @@ ARM:
 
 ```bash
 systemctl start qemu-arm@test-arm
+```
+
+LoongArch64:
+
+```bash
+systemctl start qemu-loong@@test-loong
 ```
 
 RISC-V:

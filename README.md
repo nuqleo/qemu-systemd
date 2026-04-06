@@ -247,6 +247,15 @@ allow all
 Without this configuration, QEMU will refuse to attach to the bridge.
 This restriction is enforced by the QEMU bridge helper.
 
+If you use additional bridges, you should also extend the systemd unit dependencies accordingly.
+
+For example:
+```ini
+Wants=sys-subsystem-net-devices-virbr1.device
+After=sys-subsystem-net-devices-virbr1.device
+```
+This ensures that all required bridge interfaces are available before the VM starts.
+
 ---
 
 ### IPv4

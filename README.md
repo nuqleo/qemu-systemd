@@ -109,7 +109,7 @@ systemctl start qemu-arm@test-arm
 LoongArch64:
 
 ```bash
-systemctl start qemu-loong@@test-loong
+systemctl start qemu-loong@test-loong
 ```
 
 RISC-V:

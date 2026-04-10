@@ -51,7 +51,7 @@ qemu-systemd
 - systemd
 - systemd-networkd
 - nftables
-- `nc` (netcat, e.g. netcat-openbsd or nmap-ncat) — used by systemd unit to send `system_powerdown` to VM
+- `nc` (netcat, e.g. OpenBSD netcat or nmap-ncat) — used by systemd unit to send `system_powerdown` to VM
 
 ---
 
@@ -187,7 +187,7 @@ The systemd service reads the `QEMU_ARGS` variable and passes it directly to the
 
 QEMU is executed under a dedicated unprivileged user.
 
-* On Fedora, this user is typically qemu
+* On Fedora, this user is typically `qemu`
 * On other systems, the user name may differ depending on the distribution
 
 You may need to adjust the user configuration in the systemd unit files depending on your system.

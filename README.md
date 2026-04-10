@@ -190,7 +190,7 @@ QEMU is executed under a dedicated unprivileged user.
 * On Fedora, this user is typically `qemu`
 * On other systems, the user name may differ depending on the distribution
 
-You may need to adjust the user configuration in the systemd unit files depending on your system.
+You may need to adjust the user configuration in the systemd unit file depending on your system.
 
 ### Service stop behavior
 

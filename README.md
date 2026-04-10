@@ -139,8 +139,6 @@ The systemd service uses `QEMU_ARCH` to select the appropriate QEMU binary:
 ```
 /usr/bin/qemu-system-${QEMU_ARCH}
 ```
-Make sure the corresponding binary is installed on the system.
-
 The value of `QEMU_ARCH` must match an available QEMU system emulator installed on the host.
 
 Examples include:

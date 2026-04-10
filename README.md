@@ -33,15 +33,12 @@ qemu-systemd
    │   ├── test-arm.conf
    │   ├── test-loong.conf
    │   ├── test-riscv.conf
-   │   └── test-vm.conf
+   │   └── test-x86.conf
    └── systemd
        ├── network
        │   ├── virbr0.netdev
        │   └── virbr0.network
        └── system
-           ├── qemu-arm@.service
-           ├── qemu-loong@.service
-           ├── qemu-riscv@.service
            └── qemu@.service
 
 ````
@@ -97,25 +94,25 @@ nft -f /etc/nftables/qemu-nat.nft
 x86_64:
 
 ```bash
-systemctl start qemu@test-vm
+systemctl start qemu@test-x86
 ```
 
 AArch64:
 
 ```bash
-systemctl start qemu-arm@test-arm
+systemctl start qemu@test-arm
 ```
 
 LoongArch64:
 
 ```bash
-systemctl start qemu-loong@test-loong
+systemctl start qemu@test-loong
 ```
 
 RISC-V:
 
 ```bash
-systemctl start qemu-riscv@test-riscv
+systemctl start qemu@test-riscv
 ```
 
 ### Enable autostart
@@ -133,11 +130,20 @@ VM configuration files are stored in:
 ```
 /etc/qemu/
 ```
-Each configuration file defines a `QEMU_ARGS` variable which is used by the corresponding systemd unit.
+Each configuration file defines:
 
+- `QEMU_ARCH` — target architecture
+- `QEMU_ARGS` — QEMU command-line arguments
+
+The systemd service uses `QEMU_ARCH` to select the appropriate QEMU binary:
+```
+/usr/bin/qemu-system-${QEMU_ARCH}
+```
 Example:
 
 ```bash
+QEMU_ARCH="x86_64"
+
 QEMU_ARGS="-m 8G \
 -smp 16,sockets=2,cores=8,threads=1 \
 -cpu host,kvm=off \

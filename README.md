@@ -139,6 +139,7 @@ The systemd service uses `QEMU_ARCH` to select the appropriate QEMU binary:
 ```
 /usr/bin/qemu-system-${QEMU_ARCH}
 ```
+Make sure the corresponding binary is installed on the system.
 
 The value of `QEMU_ARCH` must match an available QEMU system emulator installed on the host.
 
@@ -182,7 +183,7 @@ QEMU_ARGS="-m 8G \
 -bios /usr/share/edk2/ovmf/OVMF_CODE.fd \
 -boot menu=off"
 ```
-The systemd service reads `QEMU_ARGS` variable and passes it directly to the QEMU binary.
+The systemd service reads the `QEMU_ARGS` variable and passes it directly to the QEMU binary.
 
 ## Service User
 
@@ -191,7 +192,7 @@ QEMU is executed under a dedicated unprivileged user.
 * On Fedora, this user is typically qemu
 * On other systems, the user name may differ depending on the distribution
 
-You may need to adjust the `-run-with user=qemu` option in the systemd unit files accordingly.
+You may need to adjust the user configuration in the systemd unit files depending on your system.
 
 ### Service stop behavior
 
@@ -216,6 +217,7 @@ After=sys-subsystem-net-devices-virbr0.device
 This ensures that the network interface is created before the VM starts.
 
 Make sure that systemd-networkd is running and has already configured the bridge interface before starting QEMU services.
+If the interface is not present, QEMU may fail to start with bridge-related errors.
 
 ### QEMU monitor socket
 

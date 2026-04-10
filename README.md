@@ -151,6 +151,16 @@ Examples include:
 
 Additional architectures may be used if supported by the installed QEMU packages.
 
+### Environment file syntax
+
+Configuration files in `/etc/qemu/` are systemd environment files, not shell scripts.
+
+When using line continuations (`\`), make sure:
+
+- the backslash is the **last character on the line**
+- there are **no trailing spaces or characters after `\`**
+- the value is properly quoted
+
 Example:
 
 ```bash

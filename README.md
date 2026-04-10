@@ -214,7 +214,7 @@ The unit is configured with:
 Wants=sys-subsystem-net-devices-virbr0.device
 After=sys-subsystem-net-devices-virbr0.device
 ```
-This ensures that the network interface is created before the VM starts.
+This ensures that the network interface exists before the VM starts.
 
 Make sure that systemd-networkd is running and has already configured the bridge interface before starting QEMU services.
 If the interface is not present, QEMU may fail to start with bridge-related errors.

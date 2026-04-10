@@ -287,7 +287,7 @@ Static leases are configured in `virbr0.network`:
 [DHCPServerStaticLease]
 MACAddress=00:01:02:03:04:05
 Address=192.168.122.2
-Hostname=test-vm
+Hostname=test-x86
 ```
 
 ---

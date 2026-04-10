@@ -60,10 +60,10 @@ qemu-systemd
 Copy files into system directories:
 
 ```bash
-cp -r etc/systemd/system/* /etc/systemd/system/
-cp -r etc/systemd/network/* /etc/systemd/network/
-cp -r etc/qemu /etc/
+cp etc/systemd/system/qemu@.service /etc/systemd/system/
+cp etc/systemd/network/virbr0.* /etc/systemd/network/
 cp etc/nftables/qemu-nat.nft /etc/nftables/
+cp -r etc/qemu /etc/
 ````
 
 Reload systemd configuration:
@@ -118,7 +118,7 @@ systemctl start qemu@test-riscv
 ### Enable autostart
 
 ```bash
-systemctl enable qemu@test-vm
+systemctl enable qemu@test-x86
 ```
 
 ---
@@ -160,7 +160,7 @@ QEMU_ARGS="-m 8G \
 -bios /usr/share/edk2/ovmf/OVMF_CODE.fd \
 -boot menu=off"
 ```
-The systemd service reads this variable and passes it directly to the QEMU binary.
+The systemd service reads `QEMU_ARGS` variable and passes it directly to the QEMU binary.
 
 ## Service User
 

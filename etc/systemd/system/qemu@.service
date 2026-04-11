@@ -7,7 +7,7 @@ After=sys-subsystem-net-devices-virbr0.device
 Type=simple
 EnvironmentFile=/etc/qemu/%i.conf
 ExecStart=/bin/sh -c 'exec /usr/bin/qemu-system-$${QEMU_ARCH} -name %i -monitor unix:/run/qemu-%i.sock,server,nowait -run-with user=qemu $${QEMU_ARGS}'
-ExecStop=-/bin/sh -c 'echo system_powerdown | nc -U /run/qemu-%i.sock; tail --pid=$MAINPID -f /dev/null'
+ExecStop=-/bin/sh -c 'printf "system_powerdown\nsendkey power\n" | nc -U /run/qemu-%i.sock; tail --pid=$MAINPID -f /dev/null'
 TimeoutStopSec=60
 
 [Install]

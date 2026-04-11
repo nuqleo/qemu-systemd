@@ -6,7 +6,7 @@ It is intended for lightweight environments where virtual machines are managed t
 
 ## Features
 
-- systemd template units for running QEMU virtual machines
+- systemd template units for running [QEMU](https://gitlab.com/qemu-project/qemu) virtual machines
 - Support for multiple architectures:
   - x86_64
   - AArch64

@@ -1,4 +1,4 @@
-This repository provides a simple and structured way to run QEMU virtual machines using systemd units, with networking handled by systemd-networkd and nftables.
+This repository provides a simple and structured way to run [QEMU](https://gitlab.com/qemu-project/qemu) virtual machines using systemd units, with networking handled by systemd-networkd and nftables.
 
 It is intended for lightweight environments where virtual machines are managed through plain configuration files without additional virtualization layers.
 
@@ -6,7 +6,7 @@ It is intended for lightweight environments where virtual machines are managed t
 
 ## Features
 
-- systemd template units for running [QEMU](https://gitlab.com/qemu-project/qemu) virtual machines
+- systemd template units for running QEMU virtual machines
 - Support for multiple architectures:
   - x86_64
   - AArch64

@@ -240,9 +240,9 @@ You can then interactively send QEMU monitor commands.
 
 ## Networking
 
-The provided systemd-networkd configuration:
+The provided [systemd-networkd](https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html) configuration:
 
-* Creates a bridge interface `virbr0`
+* [Creates](https://www.freedesktop.org/software/systemd/man/latest/systemd.netdev.html) a bridge interface `virbr0`
 * Provides IPv4 and IPv6 connectivity for virtual machines
 
 ### Bridge usage

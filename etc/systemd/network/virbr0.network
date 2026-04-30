@@ -16,14 +16,14 @@ PoolSize=200
 DNS=192.168.122.1
 NTP=192.168.122.1
 # DHCP option 121 (Classless Static Routes) (RFC 3442) for 10.0.0.0/24 via 192.168.122.1
-# SendOption=121:string:\x18\x0a\x00\x00\xc0\xa8\x7a\x01
+SendOption=121:string:\x18\x0a\x00\x00\xc0\xa8\x7a\x01
 
 [IPv6Prefix]
 Prefix=2001:db8::/64
 
 # IPv6 Route Information Option (RIO) via Router Advertisement (RFC 4191)
-# [IPv6RoutePrefix]
-# Route=2001:db8:1::/64
+[IPv6RoutePrefix]
+Route=2001:db8:1::/64
 
 [DHCPServerStaticLease]
 MACAddress=00:01:02:03:04:05

@@ -168,7 +168,7 @@ QEMU_ARCH="x86_64"
 QEMU_ARGS="-m 8G \
 -smp 16,sockets=2,cores=8,threads=1 \
 -cpu host,kvm=off \
--machine type=q35,accel=kvm,usb=on,firmware=/usr/share/edk2/ovmf/OVMF_CODE.fd \
+-machine type=q35,accel=kvm,firmware=/usr/share/edk2/ovmf/OVMF_CODE.fd \
 -device virtio-scsi-pci,id=scsi0,num_queues=4 \
 -drive file=/path/to/vm.qcow2,format=qcow2,if=none,id=hd0,cache=unsafe,discard=unmap,detect-zeroes=unmap \
 -device scsi-hd,bus=scsi0.0,drive=hd0 \

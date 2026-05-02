@@ -133,7 +133,7 @@ VM configuration files are stored in:
 Each configuration file defines:
 
 - `QEMU_ARCH` — target architecture
-- `QEMU_ARGS` — QEMU command-line arguments
+- `QEMU_ARGS` — QEMU [command-line](https://www.qemu.org/docs/master/system/qemu-manpage.html) arguments
 
 The systemd service uses `QEMU_ARCH` to select the appropriate QEMU binary:
 ```

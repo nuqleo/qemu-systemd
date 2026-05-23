@@ -250,7 +250,7 @@ Virtual machine interfaces are attached to the bridge via QEMU configuration:
 
 ```bash
 -netdev bridge,br=virbr0,id=net0
--device virtio-net,netdev=net0,speed=10000,mac=00:01:02:03:04:05
+-device virtio-net,netdev=net0,speed=10000,duplex=full,mac=00:01:02:03:04:05
 ```
 
 ### Multiple bridges

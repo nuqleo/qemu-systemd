@@ -11,8 +11,8 @@ IPv6SendRA=yes
 DHCPServer=yes
 
 [DHCPServer]
-PoolOffset=2
-PoolSize=200
+PoolOffset=100
+PoolSize=100
 DNS=192.168.122.1
 NTP=192.168.122.1
 # DHCP option 121 (Classless Static Routes, RFC 3442) for 10.0.0.0/24 via 192.168.122.1

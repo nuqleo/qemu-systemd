@@ -232,6 +232,7 @@ Example session:
 
 ```text
 $ nc -U /run/qemu-<instance>.sock
+(qemu) help
 (qemu) sendkey ctrl-alt-delete
 ```
 You can then interactively send QEMU monitor commands.

@@ -18,6 +18,7 @@ It is intended for lightweight environments where virtual machines are managed t
 - IPv6 SLAAC support via Router Advertisements
 - Static DHCP leases support
 - NAT using nftables
+- MACVTAP Networking
 
 ---
 

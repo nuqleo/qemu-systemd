@@ -175,7 +175,6 @@ QEMU_ARGS="-m 8G \
 -netdev bridge,br=virbr0,id=net0 \
 -device virtio-net,netdev=net0,speed=10000,duplex=full,mac=00:01:02:03:04:05 \
 -device virtio-tablet \
--device virtio-sound \
 -device virtio-vga \
 -display vnc=127.0.0.1:10 \
 -serial telnet:127.0.0.1:2010,server,nowait \

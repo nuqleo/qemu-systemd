@@ -341,6 +341,7 @@ As an alternative to bridge-based networking, virtual machines can be connected 
 In this setup, a dedicated MACVTAP interface is typically created for each virtual machine. The corresponding VM configuration file must define the `MACVTAP` variable:
 
 ```ini
+# test-macvtap.conf
 MACVTAP="macvtap0"
 ```
 

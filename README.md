@@ -351,6 +351,7 @@ The systemd service uses this interface to obtain the associated `/dev/tap*` dev
 A MACVTAP interface must be attached to a parent network interface. For example, to connect a VM to `eth0`:
 
 ```ini
+# eth0.network
 [Match]
 Name=eth0
 
@@ -408,11 +409,10 @@ MACVTAP interfaces cannot communicate directly with the host through the parent 
 If host-to-VM connectivity is required, an additional MACVLAN interface may be created on the same parent interface. In the provided example this is `macvlan0`:
 
 ```ini
+# eth0.network
 [Network]
 MACVLAN=macvlan0
 ```
-
-The `macvlan0` interface is optional and is only needed when communication between the host and the virtual machine is required.
 
 ### Example files
 

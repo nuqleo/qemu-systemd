@@ -4,3 +4,6 @@ Name=eth0
 [Network]
 MACVLAN=macvlan0
 MACVTAP=macvtap0
+
+[Link]
+MTUBytes=9000

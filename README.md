@@ -445,12 +445,6 @@ Example:
 systemctl start qemu-macvtap@test-macvtap
 ```
 
-Enable autostart:
-
-```bash
-systemctl enable qemu-macvtap@test-macvtap
-```
-
 ## VFIO and memory locking
 
 If you use VFIO (PCI passthrough), you may need to increase or remove memory locking limits.

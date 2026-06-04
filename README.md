@@ -345,7 +345,7 @@ In this setup, a dedicated MACVTAP interface is typically created for each virtu
 MACVTAP="macvtap0"
 ```
 
-The systemd service uses this interface to obtain the associated `/dev/tap*` device and passes it to QEMU.
+The service opens the corresponding `/dev/tapX` device and passes its file descriptor to QEMU.
 
 ### Interface configuration
 
@@ -380,7 +380,7 @@ MACAddress=00:01:02:03:04:05
 -device virtio-net,netdev=net0,mac=00:01:02:03:04:05
 ```
 
-If the MAC addresses do not match, network connectivity will not work correctly.
+If the MAC addresses do not match, network traffic will not pass through the MACVTAP interface.
 
 ### Service startup order
 
@@ -399,11 +399,7 @@ Unlike the bridge-based configuration, systemd-networkd does not provide DHCP se
 
 The nftables NAT configuration included with this repository is also not used in this setup.
 
-Virtual machines are connected directly to the external network and must obtain their network configuration from services available on that network, such as:
-
-- External DHCP server
-- External IPv6 Router Advertisements
-- Static network configuration
+Network configuration must be provided by the external network (DHCP, IPv6 RA or static configuration).
 
 Any required IPv4 or IPv6 NAT must be provided by the external network infrastructure.
 

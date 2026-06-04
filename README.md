@@ -345,7 +345,11 @@ In this setup, a dedicated MACVTAP interface is typically created for each virtu
 MACVTAP="macvtap0"
 ```
 
-The systemd service opens the associated `/dev/tapX` device and passes it to QEMU via file descriptor 3 (`-netdev tap,fd=3`).
+The systemd service opens the associated `/dev/tapX` device and passes it to QEMU as file descriptor 3. The matching VM configuration entry:
+```ini
+# test-macvtap.conf
+-netdev tap,fd=3,id=net0
+```
 
 ### Interface configuration
 

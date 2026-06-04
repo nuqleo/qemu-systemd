@@ -226,7 +226,7 @@ The socket path is defined in the systemd unit, for example:
 ```bash
 /run/qemu-<instance>.sock
 ```
-This socket provides access to the [QEMU monitor](https://www.qemu.org/docs/master/system/monitor.html) (HMP - Human Monitor Protocol) and can be used to control the virtual machine.
+This socket provides access to the [QEMU monitor](https://www.qemu.org/docs/master/system/monitor.html) and can be used to control the virtual machine.
 
 Example session:
 

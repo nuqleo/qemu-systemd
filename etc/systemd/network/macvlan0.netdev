@@ -1,7 +1,7 @@
 [NetDev]
 Name=macvlan0
 Kind=macvlan
-MACAddress=00:0c:29:e3:ba:aa
+MACAddress=00:01:02:03:04:06
 
 [MACVLAN]
 Mode=bridge

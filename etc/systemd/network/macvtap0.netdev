@@ -1,7 +1,7 @@
 [NetDev]
 Name=macvtap0
 Kind=macvtap
-MACAddress=00:0c:29:e3:ba:ab
+MACAddress=00:01:02:03:04:05
 
 [MACVTAP]
 Mode=bridge

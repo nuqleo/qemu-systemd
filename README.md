@@ -334,16 +334,6 @@ Prefix=2001:db8::/64
 
 ---
 
-### VFIO and memory locking
-
-If you use VFIO (PCI passthrough), you may need to increase or remove memory locking limits.
-
-Add the following to the `[Service]` section of the systemd unit:
-
-```ini
-LimitMEMLOCK=infinity
-```
-
 ## MACVTAP Networking
 
 As an alternative to bridge-based networking, virtual machines can be connected directly to the external Layer 2 network using MACVTAP interfaces instead of a software bridge.
@@ -367,8 +357,28 @@ Name=eth0
 [Network]
 MACVTAP=macvtap0
 ```
-
 Additional virtual machines can use their own MACVTAP interfaces (`macvtap1`, `macvtap2`, etc.) attached to the same or a different parent interface.
+
+### MAC address consistency
+
+The MAC address configured for the virtual machine must match the MAC address assigned to the corresponding MACVTAP interface.
+
+Example:
+
+```ini
+# macvtap0.netdev
+[NetDev]
+Name=macvtap0
+Kind=macvtap
+MACAddress=00:0c:29:e3:ba:ab
+```
+
+```bash
+# test-macvtap.conf
+-device virtio-net,netdev=net0,mac=00:0c:29:e3:ba:ab
+```
+
+If the MAC addresses do not match, network connectivity will not work correctly.
 
 ### Service startup order
 
@@ -435,6 +445,16 @@ Enable autostart:
 
 ```bash
 systemctl enable qemu-macvtap@test-macvtap
+```
+
+## VFIO and memory locking
+
+If you use VFIO (PCI passthrough), you may need to increase or remove memory locking limits.
+
+Add the following to the `[Service]` section of the systemd unit:
+
+```ini
+LimitMEMLOCK=infinity
 ```
 
 ## Notes

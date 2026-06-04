@@ -370,12 +370,12 @@ Example:
 [NetDev]
 Name=macvtap0
 Kind=macvtap
-MACAddress=00:0c:29:e3:ba:ab
+MACAddress=00:01:02:03:04:05
 ```
 
 ```bash
 # test-macvtap.conf
--device virtio-net,netdev=net0,mac=00:0c:29:e3:ba:ab
+-device virtio-net,netdev=net0,mac=00:01:02:03:04:05
 ```
 
 If the MAC addresses do not match, network connectivity will not work correctly.

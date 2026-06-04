@@ -344,6 +344,99 @@ Add the following to the `[Service]` section of the systemd unit:
 LimitMEMLOCK=infinity
 ```
 
+## MACVTAP Networking
+
+As an alternative to bridge-based networking, virtual machines can be connected directly to the external Layer 2 network using MACVTAP interfaces instead of a software bridge.
+
+In this setup, a dedicated MACVTAP interface is typically created for each virtual machine. The corresponding VM configuration file must define the `MACVTAP` variable:
+
+```ini
+MACVTAP="macvtap0"
+```
+
+The systemd service uses this interface to obtain the associated `/dev/tap*` device and passes it to QEMU.
+
+### Interface configuration
+
+A MACVTAP interface must be attached to a parent network interface. For example, to connect a VM to `eth0`:
+
+```ini
+[Match]
+Name=eth0
+
+[Network]
+MACVTAP=macvtap0
+```
+
+Additional virtual machines can use their own MACVTAP interfaces (`macvtap1`, `macvtap2`, etc.) attached to the same or a different parent interface.
+
+### Service startup order
+
+The `qemu-macvtap@.service` unit depends on the corresponding MACVTAP interface being available before the VM starts:
+
+```ini
+Wants=sys-subsystem-net-devices-macvtap0.device
+After=sys-subsystem-net-devices-macvtap0.device
+```
+
+If a different interface name is used, the unit dependencies should be adjusted accordingly.
+
+### DHCP and IPv6 configuration
+
+Unlike the bridge-based configuration, systemd-networkd does not provide DHCP services or IPv6 Router Advertisements to virtual machines when using MACVTAP.
+
+Virtual machines are connected directly to the external network and must obtain their network configuration from services available on that network, such as:
+
+* External DHCP server
+* External IPv6 Router Advertisements
+* Static network configuration
+
+### Host-to-VM communication
+
+MACVTAP interfaces cannot communicate directly with the host through the parent interface.
+
+If host-to-VM connectivity is required, an additional MACVLAN interface may be created on the same parent interface. In the provided example this is `macvlan0`:
+
+```ini
+[Network]
+MACVLAN=macvlan0
+```
+
+The `macvlan0` interface is optional and is only needed when communication between the host and the virtual machine is required.
+
+### Example files
+
+```
+qemu-systemd
+└─ etc
+   ├── qemu
+   │   └── test-macvtap.conf
+   └── systemd
+       ├── network
+       │   ├── eth0.network
+       │   ├── macvlan0.netdev
+       │   ├── macvlan0.network
+       │   ├── macvtap0.netdev
+       │   └── macvtap0.network
+       └── system
+           └── qemu-macvtap@.service
+```
+### Starting a VM
+
+Virtual machines using MACVTAP networking are started with the `qemu-macvtap@.service` unit.
+
+Example:
+
+```bash
+systemctl start qemu-macvtap@test-macvtap
+```
+
+Enable autostart:
+
+```bash
+systemctl enable qemu-macvtap@test-macvtap
+```
+
 ## Notes
 
 * No VM lifecycle management beyond systemd

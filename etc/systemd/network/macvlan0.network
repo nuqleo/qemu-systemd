@@ -1,0 +1,10 @@
+[Match]
+Name=macvlan0
+
+[Network]
+DHCP=yes
+
+[DHCPv4]
+UseRoutes=yes
+UseHostname=no
+ClientIdentifier=mac

@@ -1,0 +1,7 @@
+[Match]
+Name=macvtap0
+
+[Network]
+LinkLocalAddressing=no
+ConfigureWithoutCarrier=yes
+IgnoreCarrierLoss=yes

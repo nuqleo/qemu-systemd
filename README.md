@@ -402,11 +402,7 @@ If a different interface name is used, the unit dependencies should be adjusted 
 
 Unlike the bridge-based configuration, systemd-networkd does not provide DHCP services or IPv6 Router Advertisements to virtual machines when using MACVTAP.
 
-Network configuration must be provided by the external network (DHCP, IPv6 RA or static configuration).
-
-The nftables NAT configuration included with this repository is also not used in this setup.
-
-Any required IPv4 or IPv6 NAT must be provided by the external network infrastructure.
+Network configuration must be provided by the external network (NAT, DHCP, IPv6 RA or static configuration).
 
 ### Host-to-VM communication
 

@@ -126,7 +126,7 @@ systemctl enable qemu@test-x86
 
 The example configuration files included in this repository do not provide disk images.
 
-Prebuilt virtual machine images for x86_64, AArch64, LoongArch64 and RISC-V can be obtained from:
+Prebuilt virtual machine images qcow2 for x86_64, AArch64, LoongArch64 and RISC-V can be obtained from:
 
 - https://sourceforge.net/projects/fedora-remix-images/
 

@@ -146,7 +146,7 @@ Each configuration file defines:
 
 The systemd service uses `QEMU_ARCH` to select the appropriate QEMU binary:
 ```
-/usr/bin/qemu-system-${QEMU_ARCH}
+/usr/bin/qemu-system-$QEMU_ARCH
 ```
 The value of `QEMU_ARCH` must match an available QEMU system emulator installed on the host.
 

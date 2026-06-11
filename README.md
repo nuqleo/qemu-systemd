@@ -186,8 +186,7 @@ QEMU_ARGS="-m 8G \
 -device virtio-tablet \
 -device virtio-vga \
 -display vnc=127.0.0.1:10 \
--serial telnet:127.0.0.1:2010,server,nowait \
--boot menu=off"
+-serial telnet:127.0.0.1:2010,server,nowait"
 ```
 The systemd service reads the `QEMU_ARGS` variable and passes it directly to the QEMU binary.
 

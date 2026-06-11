@@ -6,5 +6,5 @@ DHCP=yes
 
 [DHCPv4]
 UseRoutes=yes
-UseHostname=no
+UseHostname=yes
 ClientIdentifier=mac

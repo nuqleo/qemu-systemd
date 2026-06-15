@@ -6,6 +6,6 @@ DHCP=yes
 
 [DHCPv4]
 UseRoutes=yes
-# Requires polkit for hostname updates
+# Requires polkitd for hostname updates
 UseHostname=yes
 ClientIdentifier=mac

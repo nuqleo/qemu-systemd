@@ -239,6 +239,7 @@ Example session:
 ```text
 $ nc -U /run/qemu-<instance>.sock
 (qemu) help
+(qemu) help screendump
 (qemu) screendump /path/to/screenshot.png -f png
 (qemu) sendkey ctrl-alt-delete
 ```

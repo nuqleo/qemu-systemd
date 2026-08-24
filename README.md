@@ -453,7 +453,12 @@ systemctl start qemu-macvtap@test-macvtap
 
 ## VFIO and memory locking
 
-If you use VFIO (PCI passthrough), you may need to increase or remove memory locking limits.
+If you use VFIO (PCI passthrough)
+```bash
+# qemu.conf
+-device vfio-pci,host=01:00.0
+```
+you may need to increase or remove memory locking limits.
 
 Add the following to the `[Service]` section of the systemd unit:
 

@@ -460,9 +460,8 @@ If you use VFIO (PCI passthrough)
 ```
 you may need to increase or remove memory locking limits.
 
-Add the following to the `[Service]` section of the systemd unit:
-
 ```ini
+# qemu-vfio@.service
 LimitMEMLOCK=infinity
 ```
 
